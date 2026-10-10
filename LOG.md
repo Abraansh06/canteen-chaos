@@ -71,6 +71,21 @@ order screen round in different places.
 **Time:** Around 10 minutes.
 
 
+## CC-09 — "Inverted price sorting"
+
+**Reproduced:** Selecting "Price: Low to High" ordered items in descending order, and vice-versa.
+
+**Cause:** In `backend/logic/search.js`, the comparator functions inside `SORTERS` for `price-asc` and `price-desc` had reversed subtraction operands.
+
+**Fix:** Swapped `SORTERS['price-asc']` to `(a, b) => a.price - b.price` and `SORTERS['price-desc']` to `(a, b) => b.price - a.price`.
+
+**Checked:** Verified in browser dropdown that menu items now sort properly in both ascending and descending order.
+
+**Time:** Around 15 minutes.
+
+
+
+
 ## Could not fix
 
 For anything you investigated but did not solve. Say what you tried and
