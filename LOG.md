@@ -58,6 +58,17 @@ order screen round in different places.
 
 **Time:** It took around 5 minutes.
 
+## CC-09 — "pagination slicing broken"
+
+**Reproduced:** Loading next page or scrolling loaded the full dish list repeatedly instead of discrete item chunks.
+
+**Cause:** In `backend/logic/search.js`, `paginate()` correctly sliced the array into `const items = list.slice(...)` but erroneously returned `items: list`.
+
+**Fix:** Changed line 93 in `backend/logic/search.js` from `items: list` to `items: items`.
+
+**Checked:** Verified via browser and API responses that each page payload now strictly respects pagination bounds (`limit: 12`).
+
+**Time:** Around 10 minutes.
 
 
 ## Could not fix
