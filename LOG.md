@@ -46,6 +46,19 @@ order screen round in different places.
 **Time:** It took around 10 minutes, as most of the portion was just to find the `dish-body` class selector.
 
 
+## CC-01 — "<Search suggestions behind everthings>"
+
+**Reproduced:** When searching for any specific item, when suggestions start to appear but user can't see them due to positioning problem.
+
+**Cause:** In `frontend/style.css` , `#catTabs` z-index was 40 whereas in `.search-wrap` z-index was 1 due to which it appeared to be hidden behind the category tabs.
+ 
+**Fix:** I modified the `z-index` of `search-wrap` from 1 to 50 , although we can take any number greater than 40. 
+
+**Checked:** When searching for any item, the suggestions comes after tabs.
+
+**Time:** It took around 5 minutes.
+
+
 
 ## Could not fix
 
