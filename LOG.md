@@ -33,17 +33,17 @@ order screen round in different places.
 
 
 
-## CC-0X — "<the complaint, in short>"
+## CC-02 — "<dark mode dish text problem>"
 
-**Reproduced:**
+**Reproduced:** When switching from light mode to dark mode; the dish text doesn't change according to the given mode, which makes it difficult to read. 
 
-**Cause:**
+**Cause:** In `frontend/style.css` , `.dish-body` had a `hardcoded color` around black, instead of using themed variable.
+ 
+**Fix:** I Replaced the hardcoded hex code with `color: var(--ink);` on `.dish-body` so it automatically shifts to light color text when dark mode is toggled.
 
-**Fix:**
+**Checked:** Toggled dark mode in the browser. Dish titles, descriptions, and pricing now appear in the proper light font color with clear contrast.
 
-**Checked:**
-
-**Time:**
+**Time:** It took around 10 minutes, as most of the portion was just to find the `dish-body` class selector.
 
 
 
