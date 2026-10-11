@@ -98,6 +98,22 @@ order screen round in different places.
 
 
 
+## CC-05 — "Category and filter bar scrolls away on mobile"
+
+**Reproduced:** On mobile screen sizes, the category and filter bar scrolled off-screen instead of sticking beneath the header.
+
+**Cause:**
+1. `.filters` was set to `top: 0` (sliding under `.site-header`) instead of accounting for the full header height (`93px` including `.slot-bar`).
+2. Inside `@media (max-width: 480px)`, `.view` had `overflow-x: hidden;`, which prevented elements with `position: sticky` from functioning properly.
+
+**Fix:** 
+1. Updated `.filters` in `frontend/style.css` to `top: 93px;`.
+2. Removed `overflow-x: hidden;` from `.view` under `@media (max-width: 480px)`.
+
+**Checked:** Tested scrolling across mobile viewport widths (375px–480px); the category and filter bar remains pinned cleanly under the header without overlap.
+
+**Time:** 25 minutes
+
 
 ## Could not fix
 
