@@ -114,6 +114,18 @@ order screen round in different places.
 
 **Time:** 25 minutes
 
+## CC-08 — "An old coupon still works"
+
+**Reproduced:** Entering an expired coupon code at checkout still applied the discount instead of rejecting it.
+
+**Cause:** In `logic/pricing.js`, `applyCoupon` checked `usesLeft`, `minOrder`, `vegOnly`, and `slots`, but never checked `coupon.expiresAt` against the current timestamp `now`.
+
+**Fix:** Added an expiration check `if (coupon.expiresAt && new Date(coupon.expiresAt) <= new Date(now))` in `applyCoupon` returning `{ valid: false, discount: 0, reason: 'This coupon has expired' }`.
+
+**Checked:** Ran unit tests / passed expired coupon object to `applyCoupon` with current timestamp; verified it returns `valid: false` with reason "This coupon has expired".
+
+**Time:** 20-25 minutes
+
 
 ## Could not fix
 
