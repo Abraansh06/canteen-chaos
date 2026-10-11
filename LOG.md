@@ -33,7 +33,7 @@ order screen round in different places.
 
 
 
-## CC-02 — "<dark mode dish text problem>"
+### CC-02 — "<dark mode dish text problem>"
 
 **Reproduced:** When switching from light mode to dark mode; the dish text doesn't change according to the given mode, which makes it difficult to read. 
 
@@ -46,7 +46,7 @@ order screen round in different places.
 **Time:** It took around 10 minutes, as most of the portion was just to find the `dish-body` class selector.
 
 
-## CC-01 — "<Search suggestions behind everthings>"
+### CC-01 — "<Search suggestions behind everthings>"
 
 **Reproduced:** When searching for any specific item, when suggestions start to appear but user can't see them due to positioning problem.
 
@@ -58,7 +58,7 @@ order screen round in different places.
 
 **Time:** It took around 5 minutes.
 
-## CC-09 — "pagination slicing broken"
+### CC-09 — "pagination slicing broken"
 
 **Reproduced:** Loading next page or scrolling loaded the full dish list repeatedly instead of discrete item chunks.
 
@@ -71,7 +71,7 @@ order screen round in different places.
 **Time:** Around 10 minutes.
 
 
-## CC-09 — "Inverted price sorting"
+### CC-10 — "Inverted price sorting"
 
 **Reproduced:** Selecting "Price: Low to High" ordered items in descending order, and vice-versa.
 
@@ -82,6 +82,19 @@ order screen round in different places.
 **Checked:** Verified in browser dropdown that menu items now sort properly in both ascending and descending order.
 
 **Time:** Around 15 minutes.
+
+
+### CC-04 — "Buttons unresponsive on tablet viewports"
+
+**Reproduced:** On viewport widths between 761px and 900px, clicking or tapping "Add to Cart" and the favorite star button on dish cards did nothing.
+
+**Cause:** In `frontend/style.css`, the media query `(min-width: 761px) and (max-width: 900px)` created `.dish-card::after` and `.img-wrap::after` pseudo-elements with positive z-index values directly over the buttons without `pointer-events: none`, intercepting all click and touch events.
+
+**Fix:** Added `pointer-events: none;` to `.dish-card::after` and `.img-wrap::after` inside the tablet media query in `frontend/style.css`.
+
+**Checked:** Tested in browser responsive mode at 800px width. Verified that clicking the favorite star button toggles favorites and "Add to Cart" correctly adds items to the cart.
+
+**Time:** 10 minutes
 
 
 
