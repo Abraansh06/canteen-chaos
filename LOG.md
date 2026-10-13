@@ -164,6 +164,15 @@ else if (qty > Number(dish.stock)) return errors.push(`Only ${dish.stock} of ${d
 **What I would try next:** in `blockedReason` , I tried boundary conditions if, picking number of item are greater than alvailable stock.
 
 
+### CC-03 — "<The menu is wider than my phone>"   
+
+**What I tried:** Attempted adjusting .menu-grid column rules and resetting .name-btn width to allow text wrapping under responsive media queries in frontend/style.css.
+
+**Where I got to:** The horizontal scrollbar persists on narrow screens, and dish cards still push past the right edge.
+
+**What I would try next:** Inspect outer containers like .wrap and .view for hidden fixed-width constraints or child flex elements forcing page blowout.
+
+
 
 ## Extra credit
 
