@@ -98,7 +98,7 @@ order screen round in different places.
 
 
 
-## CC-05 — "Category and filter bar scrolls away on mobile"
+### CC-05 — "Category and filter bar scrolls away on mobile"
 
 **Reproduced:** On mobile screen sizes, the category and filter bar scrolled off-screen instead of sticking beneath the header.
 
@@ -114,7 +114,7 @@ order screen round in different places.
 
 **Time:** 25 minutes
 
-## CC-08 — "An old coupon still works"
+### CC-08 — "An old coupon still works"
 
 **Reproduced:** Entering an expired coupon code at checkout still applied the discount instead of rejecting it.
 
@@ -126,7 +126,7 @@ order screen round in different places.
 
 **Time:** 20-25 minutes
 
-## CC-07 — "Cancelling makes it worse"
+### CC-07 — "Cancelling makes it worse"
 
 **Reproduced:** when ordering a specific item from a cart with a limited stock and then cancelling it doesnt refill stock quanity back in the item's placeholder.
 
@@ -152,6 +152,16 @@ stuck is not.
 **Where I got to:**
 
 **What I would try next:**
+
+
+### CC-06 — "<I ordered more than they had>"   
+
+**What I tried:** Attempted to validate requested quantities against available stock in validation.js inside `validateLine` by adding:
+else if (qty > Number(dish.stock)) return errors.push(`Only ${dish.stock} of ${dish.name} left`);
+
+**Where I got to:** Orders exceeding the displayed inventory were still going through and the order placement flow was not accepting requests
+
+**What I would try next:** in `blockedReason` , I tried boundary conditions if, picking number of item are greater than alvailable stock.
 
 
 
