@@ -33,7 +33,7 @@ order screen round in different places.
 
 
 
-### CC-02 — "<dark mode dish text problem>"
+### CC-02 — "< dark mode dish text problem>"
 
 **Reproduced:** When switching from light mode to dark mode; the dish text doesn't change according to the given mode, which makes it difficult to read. 
 
@@ -46,7 +46,7 @@ order screen round in different places.
 **Time:** It took around 10 minutes, as most of the portion was just to find the `dish-body` class selector.
 
 
-### CC-01 — "<Search suggestions behind everthings>"
+### CC-01 — "< Search suggestions behind everthings>"
 
 **Reproduced:** When searching for any specific item, when suggestions start to appear but user can't see them due to positioning problem.
 
