@@ -126,6 +126,18 @@ order screen round in different places.
 
 **Time:** 20-25 minutes
 
+## CC-07 — "Cancelling makes it worse"
+
+**Reproduced:** when ordering a specific item from a cart with a limited stock and then cancelling it doesnt refill stock quanity back in the item's placeholder.
+
+**Cause:** In `backend/logic/validation.js`, in `releaseStock`, the return statement erroneously deducted stock of an item after after cancelling it instead of restocking due to subtraction operator in return statement.
+
+**Fix:** Modified stock: dish.stock - line.qty to stock: dish.stock + line.qty in backend/logic/validation.js so cancelled items are properly incremented back into available stock.
+
+**Checked:** Placed of 2 dal makhani order out of its left 3 stocks ,I ordered it and cancelled it back and stock was restored to 3. 
+
+**Time:** 15-20 minutes
+
 
 ## Could not fix
 
@@ -133,7 +145,7 @@ For anything you investigated but did not solve. Say what you tried and
 where you got to. This is worth marks — leaving it blank when you got
 stuck is not.
 
-### CC-0X — "<the complaint>"
+### CC-0X — "<the complaint>"   
 
 **What I tried:**
 
