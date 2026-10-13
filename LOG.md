@@ -154,7 +154,7 @@ stuck is not.
 **What I would try next:**
 
 
-### CC-06 — "<I ordered more than they had>"   
+### CC-06 — "I ordered more than they had"   
 
 **What I tried:** Attempted to validate requested quantities against available stock in validation.js inside `validateLine` by adding:
 else if (qty > Number(dish.stock)) return errors.push(`Only ${dish.stock} of ${dish.name} left`);
@@ -164,7 +164,7 @@ else if (qty > Number(dish.stock)) return errors.push(`Only ${dish.stock} of ${d
 **What I would try next:** in `blockedReason` , I tried boundary conditions if, picking number of item are greater than alvailable stock.
 
 
-### CC-03 — "<The menu is wider than my phone>"   
+### CC-03 — "The menu is wider than my phone"   
 
 **What I tried:** Attempted adjusting .menu-grid column rules and resetting .name-btn width to allow text wrapping under responsive media queries in frontend/style.css.
 
